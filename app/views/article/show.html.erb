@@ -1,0 +1,95 @@
+<style>
+    .container{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
+    .data{
+        width: 600px;
+        display: grid;
+        background-color: rgb(210, 210, 210);
+        border: 1.5px black solid;
+        margin: 15px;
+        border-radius: 12px;
+        text-align: center;
+        padding: 10px 0px;
+    }
+    .content span{
+        display: block;
+        font-style: italic;
+        padding: 5px;
+        font-size: 15px;
+        font-weight: 100;
+        text-align: center;
+    }
+    .data p{
+        font-size: 15px;
+        padding: 3px;
+        margin: 0;
+    }
+    .title{
+        display: grid;
+        margin: 20px;
+    }
+    .title h1{
+        margin: 0;
+    }
+    .time{
+        margin: 10px;
+    }
+    .time p{
+        font-size: 12px;
+        /* display: inline; */
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .content{
+        padding: 15px;
+        justify-content: center;
+        align-items: center;
+        text-wrap: balance;
+    }
+    .btn{
+        padding: 8px;
+        margin: 5px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .btn p{
+        display: inline;
+        border: solid 1px black;
+        border-radius: 5px;
+        background-color: aliceblue;
+        padding: 5px 10px;
+    }
+    .btn p a{
+        color: black;
+        font-size: 15px;
+    }
+
+</style>
+
+
+<div class="container">
+    <div class="data">
+        <div class="title">
+            <h1><%= @article.title.capitalize %></h1>
+        </div>
+        <div class="content">
+            <%= @article.content.capitalize %>
+            <span> - by <%= @article.author.capitalize %></span>
+        </div>
+        <div class="time">
+            <p>
+                Posted-at : <%= @article.created_at %>
+            </p>
+            <p>
+                Updated-at : <%= @article.updated_at %>
+            </p>
+        </div>
+        <div class="btn">
+            <p><%= link_to "Back",article_list_path %></p>
+            <p><%= link_to "Edit",{:action => 'edit',:id => @article.id} %></p>
+        </div>
+    </div>
+</div>

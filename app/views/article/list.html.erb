@@ -1,0 +1,139 @@
+<style>
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    h1{
+        font-weight: bold;
+        text-align: center;
+        justify-content: center;
+        /* background-color: indigo; */
+        margin: 0;
+        padding: 15px;
+    }
+    .blog{
+        display: grid;
+        /* width: 100%; */
+        grid-template-columns: repeat(6, 220px);
+        grid-column-gap: 30px;
+        grid-row-gap: 25px;
+        /* background-color: indigo; */
+        padding: 10px;
+    }
+
+    .article{
+        padding: 10px 0px;
+        width: 220px;
+        background-color: rgb(210, 210, 210);
+        display: grid;
+        border-radius: 12px;
+        margin: 12px;
+        box-shadow: 5px 5px 5px 2px slategrey;
+        border: 1px solid black;        
+    }
+    .article h2{
+        text-align: center;
+        justify-content: center;
+    }
+    .article p{
+        text-align: center;
+    }
+    .btn{
+        display: flex;
+        height: 20px;
+        align-items: center;
+        justify-content: space-around;
+        margin: 15px 0px;
+    }
+    .btn p{
+        font-size: 10px;
+        display: inline;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: aliceblue;
+        border-radius: 12px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border: 0.4px solid black;
+    }
+    .btn p a{
+        color: black;
+    }
+    .btn-back{
+        display: inline;
+        padding: 15px;
+        margin: 10px;
+        padding-bottom: 40px;
+    }
+    .btn-add{
+        display: inline;
+        padding: 15px;
+        margin: 10px;
+        padding-bottom: 40px;
+    }
+    .btn-back p{
+        font-size: 12px;
+        display: inline;
+        border: 1.5px solid black;
+        border-radius: 5px;
+        padding: 8px;
+        background-color: aliceblue;
+    }
+    .btn-add p{
+        font-size: 12px;
+        display: inline;
+        border: 1.5px solid black;
+        border-radius: 5px;
+        padding: 8px;
+        background-color: aliceblue;
+    }
+    .none{
+        text-align: center;
+    }
+    .btn1{
+        justify-content: center;
+        padding: 15px;
+        display: flex;
+        /* align-items: center; */
+    }
+</style>
+
+
+<h1>Article's</h1>
+<% if @articles.empty? %>
+<div class="none">
+    <p>There is no blog article's.</p>
+</div>
+<div class="btn1">
+    <div class="btn-add">
+        <p>
+            <%= link_to "Add", article_new_path %>
+        </p>
+    </div>
+    <div class="btn-back">
+        <p>
+            <%= link_to "Back", article_index_path %>
+        </p>
+    </div>
+</div>
+<% else %>
+<div class="blog">
+    <% @articles.each do |d| %>
+    <div class="article">
+        <h2><%= d.title.capitalize %></h2>
+        <p>Author : <%= d.author.capitalize %></p>
+        <div class="btn">
+            <p><%= link_to "Read", {:action => 'show',:id => d.id} %></p>
+            <p><%= link_to "Delete",{:action => 'delete',:id => d.id},data: {'turbo-method': :delete}%></p>
+        </div>
+    </div>
+    <% end %>
+</div>
+<br><br>
+<div class="btn1">
+    <div class="btn-back">
+        <p>
+            <%= link_to "Back", article_index_path %>
+        </p>
+    </div>
+</div>
+<%end%>

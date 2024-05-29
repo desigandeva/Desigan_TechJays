@@ -1,0 +1,45 @@
+<style>
+    h1{
+        text-align: center;
+    }
+    .new{
+        display: flex;
+        margin-left: 30px;
+    }
+    .new p{
+        border: 0.8px black solid;
+        border-radius: 8px;
+        padding: 8px;
+        display: inline;
+        background-color: aliceblue;
+    }
+    .list{
+        margin-left: 30px;
+        display: flex;
+    }
+    .list p{
+        border: 0.8px black solid;
+        border-radius: 8px;
+        padding: 8px;
+        display: inline;
+        background-color: aliceblue;
+    }
+    .btn{
+        justify-content: center;
+        display: flex;
+    }
+</style>
+
+<h1>Blog Article's</h1>
+<div class="btn">
+    <div class="new">
+        <p>
+            <%= link_to "New Article", article_new_path %>
+        </p>
+    </div>
+    <div class="list">
+        <p>
+            <%= link_to "Article's", article_list_path %>
+        </p>
+    </div>
+</div>

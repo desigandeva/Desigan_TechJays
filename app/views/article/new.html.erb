@@ -1,0 +1,81 @@
+<style>
+    h1{
+        text-align: center;
+    }
+    .container{
+        width: 100%;
+        display: flex;
+        text-align: left;
+        justify-content: center;
+        align-items: center;
+    }
+    .form{
+        /* width: 380px; */
+        display: inline;
+        background-color: rgb(210,210,210);
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 12px;
+    }
+    label{
+        padding: 5px;
+        font-weight: bold;
+    }
+    .text_area{
+        margin: 0px 20px;
+    }
+    .btn_submit{
+        display: flex;
+        justify-content: space-around;
+        padding: 4px;
+        align-items: center;
+    }
+    .btn_submit input{
+        height: 35px;
+        padding: 8px;
+        border-radius: 8px;
+        border: 0.8px solid black;
+        font-weight: bold;
+        background-color: aliceblue;
+        font-size: 12px;
+    }
+    .btn_submit p{
+        background-color: aliceblue;
+        border: 0.8px solid black;
+        border-radius: 8px;
+        display: inline;
+        padding: 8px;
+        font-weight: bold;
+        font-size: 12px;
+        height: 15px;
+    }
+</style>
+
+
+<h1>Create Article</h1>
+<div class="container">
+<div class="form">
+<%= form_for @article,:url => {:action => 'create'} do |field| %>
+<p>
+    <label for="">Title : </label>
+    <%= field.text_field 'title' %>
+</p>
+<p>
+    <label for="">Author : </label>
+    <%= field.text_field 'author' %>
+</p>
+<p>
+    <label for="">Content : </label>
+    <div class="text_area">
+        <%= field.text_area 'content', size: "40x10" %>
+    </div>
+</p>
+<div class="btn_submit">
+        <%= submit_tag "Create" %>
+    <p>
+        <%= link_to "Back",article_index_path %>
+    </p>
+</div>
+<% end %>
+</div>
+</div>
